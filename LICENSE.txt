@@ -5,7 +5,7 @@ Copyright (c) 2026 EPYCInfernoDEV (also published as EPYCInferno)
 
 The MIT License below applies ONLY to the source code in this repository
 (GDScript, C#, shader, and other script files, e.g. *.gd, *.cs, *.gdshader),
-excluding anything under addons/ (see GAME ENGINE and ADDONS below).
+excluding third-party software (see GAME ENGINE and ADDONS below).
 
 All other original content, including story, dialogue, characters, world,
 and original art/music/audio, is Copyright (c) 2026 EPYCInfernoDEV (also
