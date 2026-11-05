@@ -1,3 +1,58 @@
 [gd_scene format=3 uid="uid://bkkjfpwa3fuav"]
 
+[ext_resource type="PackedScene" uid="uid://bagru3dbswn7h" path="res://scenes/player/player.tscn" id="1_sul5r"]
+[ext_resource type="PackedScene" uid="uid://tv5gsbxbcx3d" path="res://scenes/models/stair.tscn" id="2_7h61r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sul5r"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_7h61r"]
+sky_material = SubResource("ProceduralSkyMaterial_sul5r")
+
+[sub_resource type="Environment" id="Environment_0sr1o"]
+background_mode = 2
+sky = SubResource("Sky_7h61r")
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0sr1o"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sul5r"]
+material = SubResource("StandardMaterial3D_0sr1o")
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sul5r"]
+size = Vector3(10, 0.001, 10)
+
 [node name="Game" type="Node" unique_id=500145234]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1344472549]
+environment = SubResource("Environment_0sr1o")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=78888031]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=937272579 instance=ExtResource("1_sul5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43766308, 0)
+
+[node name="Level" type="Node3D" parent="." unique_id=1095359072]
+
+[node name="TempFloor" type="MeshInstance3D" parent="Level" unique_id=881726558]
+mesh = SubResource("PlaneMesh_sul5r")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/TempFloor" unique_id=1682762187]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/TempFloor/StaticBody3D" unique_id=320084262]
+shape = SubResource("BoxShape3D_sul5r")
+
+[node name="Stairs" parent="Level" unique_id=70314858 instance=ExtResource("2_7h61r")]
+transform = Transform3D(0.61879516, 0, -0.7855525, 0, 1, 0, 0.7855525, 0, 0.61879516, -1.9627249, 0, -2.7982306)
+
+[node name="Stair" parent="Level" unique_id=825763695 instance=ExtResource("2_7h61r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7861462, 0.00050008297, 3.0265467)
+metadata/asset_placer_res_id = "uid://tv5gsbxbcx3d"
+
+[node name="Stair2" parent="Level" unique_id=594920108 instance=ExtResource("2_7h61r")]
+transform = Transform3D(1.0000017, 0, 0, 0, 1, 0, 0, 0, 1.0000017, 0.98400867, 1.3372152, 3.0252771)
+metadata/asset_placer_res_id = "uid://tv5gsbxbcx3d"
